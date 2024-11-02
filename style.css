@@ -180,7 +180,7 @@ chat-footer{
     display:flex;
     height:47px;
     align-items:center;
-    gap:3px;
+    gap:4px;
     align-self:flex-end;
     padding-right:6px;
 }
