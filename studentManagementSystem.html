@@ -27,7 +27,8 @@
         <h2>Student Management System</h2>
 
         <form id="studentInfo">
-            <input type="text" id="name" placeholder="Student Name" pattern="[A-Za-z]{4-18}" class="form-control" required>
+            <input type="text" id="name" placeholder="Student Name" pattern="[A-Za-z]{4-18}" class="form-control" required onkeypress="checkInput(event)">
+            <p id="warning" style="color: red; display: none;">Only letters are allowed!</p>
             <input type="number" id="rollno" placeholder="Roll No" class="form-control" required>
             <input type="number" id="mark" placeholder="Mark" class="form-control" required>
             <button type="button" onclick="addStudent()" class="btn btn-danger btn-large">Add Student</button>
@@ -54,6 +55,18 @@
 
     <script>
         let students = [];
+
+        function checkInput(event) {
+         if (!/[A-Za-z]/.test(event.key)) {
+    
+        event.preventDefault();
+        const warning = document.getElementById("warning");
+        warning.style.display = "block";
+        setTimeout(() => {
+            warning.style.display = "none";
+        }, 2000);
+    }
+}
 
         function displayStudents() {
             const studentTable = document.getElementById("studentTable");
